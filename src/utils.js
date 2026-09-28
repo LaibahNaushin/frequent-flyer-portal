@@ -1,0 +1,3 @@
+export function sanitizeText(value=''){return String(value).replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi,'').replace(/<[^>]*>/g,'').replace(/javascript\s*:/gi,'').replace(/on\w+\s*=/gi,'').trim()}
+export function validatePassenger(form){const e={},n=sanitizeText(form.name),m=sanitizeText(form.memberId),mail=sanitizeText(form.email);if(!n)e.name='Full name is required.';if(!m)e.memberId='Membership ID is required.';else if(!/^FF-\d{6}$/i.test(m))e.memberId='Use format FF-123456.';if(!mail)e.email='Email is required.';else if(!/^\S+@\S+\.\S+$/.test(mail))e.email='Enter a valid email.';return e}
+export function analyticsPing(action){console.log(`[Analytics] User interacted with End-to-End Frequent Flyer Portal: ${action}`)}
